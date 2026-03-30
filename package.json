@@ -1,5 +1,5 @@
 {
-  "name": "@stevestencil/pgvector-skill-search",
+  "name": "@leaptodigital/pgvector-skill-search",
   "version": "0.1.0",
   "description": "Postgres pgvector-backed semantic skill search adapter with Bedrock embeddings and hybrid BM25 + vector RRF ranking",
   "type": "module",
@@ -11,13 +11,36 @@
       "types": "./dist/src/index.d.ts"
     }
   },
+  "files": [
+    "dist/src/",
+    "sql/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "pgvector",
+    "skill-search",
+    "semantic-search",
+    "embeddings",
+    "bm25",
+    "vector-search",
+    "postgres",
+    "rag",
+    "reciprocal-rank-fusion"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevestencil/pgvector-skill-search.git"
+  },
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/ tests/ --no-error-on-unmatched-pattern",
-    "lint:fix": "eslint src/ tests/ --fix --no-error-on-unmatched-pattern"
+    "lint:fix": "eslint src/ tests/ --fix --no-error-on-unmatched-pattern",
+    "prepublishOnly": "pnpm test && pnpm build"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.1016.0",

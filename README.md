@@ -1,4 +1,4 @@
-# @stevestencil/pgvector-skill-search
+# @leaptodigital/pgvector-skill-search
 
 Postgres pgvector-backed semantic skill search. Hybrid BM25 + cosine similarity + LLM reranking for markdown-based skill/tool document libraries.
 
@@ -16,7 +16,7 @@ Postgres pgvector-backed semantic skill search. Hybrid BM25 + cosine similarity 
 ## Installation
 
 ```bash
-npm install @stevestencil/pgvector-skill-search pg
+npm install @leaptodigital/pgvector-skill-search pg
 ```
 
 ## Schema setup
@@ -24,7 +24,7 @@ npm install @stevestencil/pgvector-skill-search pg
 Run the SQL in `sql/schema.sql` once against your Postgres database:
 
 ```bash
-psql $DATABASE_URL < node_modules/@stevestencil/pgvector-skill-search/sql/schema.sql
+psql $DATABASE_URL < node_modules/@leaptodigital/pgvector-skill-search/sql/schema.sql
 ```
 
 Requires PostgreSQL 15+ with the pgvector extension available.
@@ -37,8 +37,8 @@ import {
   PgvectorSkillSearchAdapter,
   BedrockEmbeddingService,
   SkillSeederService,
-} from '@stevestencil/pgvector-skill-search';
-import type { Logger } from '@stevestencil/pgvector-skill-search';
+} from '@leaptodigital/pgvector-skill-search';
+import type { Logger } from '@leaptodigital/pgvector-skill-search';
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 const embedding = new BedrockEmbeddingService({ region: 'us-east-1' });
@@ -73,7 +73,7 @@ const results = await adapter.search(
 Ships with `BedrockEmbeddingService` (Amazon Titan Embeddings V2, 1024 dims). Any class implementing `IEmbeddingProvider` works:
 
 ```typescript
-import type { IEmbeddingProvider } from '@stevestencil/pgvector-skill-search';
+import type { IEmbeddingProvider } from '@leaptodigital/pgvector-skill-search';
 
 // OpenAI example
 class OpenAIEmbeddingProvider implements IEmbeddingProvider {
@@ -112,7 +112,7 @@ const embedding = new OpenAIEmbeddingProvider(process.env.OPENAI_API_KEY);
 Pass any object implementing `IReranker` as the third constructor argument. The interface is minimal — just a `complete()` method that takes a prompt and returns text:
 
 ```typescript
-import type { IReranker, RerankerCompletionInput } from '@stevestencil/pgvector-skill-search';
+import type { IReranker, RerankerCompletionInput } from '@leaptodigital/pgvector-skill-search';
 
 // OpenAI example
 class OpenAIReranker implements IReranker {
@@ -159,5 +159,5 @@ const adapter = new PgvectorSkillSearchAdapter(pool, embedding, null, logger);
 ## QA benchmark
 
 ```bash
-DATABASE_URL=... npx tsx node_modules/@stevestencil/pgvector-skill-search/scripts/skill-search-qa.ts
+DATABASE_URL=... npx tsx node_modules/@leaptodigital/pgvector-skill-search/scripts/skill-search-qa.ts
 ```
