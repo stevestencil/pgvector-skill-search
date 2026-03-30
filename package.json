@@ -1,0 +1,35 @@
+{
+  "name": "@stevestencil/pgvector-skill-search",
+  "version": "0.1.0",
+  "description": "Postgres pgvector-backed semantic skill search adapter with Bedrock embeddings and hybrid BM25 + vector RRF ranking",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/ tests/ --no-error-on-unmatched-pattern",
+    "lint:fix": "eslint src/ tests/ --fix --no-error-on-unmatched-pattern"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.1016.0",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.21.0",
+    "@types/pg": "^8.20.0",
+    "@vitest/coverage-v8": "3.0.7",
+    "eslint": "9.21.0",
+    "typescript": "5.7.3",
+    "typescript-eslint": "8.25.0",
+    "vitest": "3.0.7"
+  }
+}
