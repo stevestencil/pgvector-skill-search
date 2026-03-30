@@ -8,7 +8,7 @@ Postgres pgvector-backed semantic skill search. Hybrid BM25 + cosine similarity 
 
 - Stores markdown skill documents in PostgreSQL with pgvector HNSW embeddings
 - Hybrid search: BM25 (tsvector) + cosine vector distance + Reciprocal Rank Fusion
-- Optional Claude reranking via a swappable `IReranker` interface
+- Optional LLM reranking via a swappable `IReranker` interface (works with any LLM)
 - Content-addressable upsert (SHA-256, skips unchanged docs)
 - Orphan cleanup (deletes removed documents)
 - Multiple named collections (e.g. `global` + per-org)
