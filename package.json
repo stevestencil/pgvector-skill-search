@@ -1,5 +1,5 @@
 {
-  "name": "@leaptodigital/pgvector-skill-search",
+  "name": "@stevestencil/pgvector-skill-search",
   "version": "0.1.0",
   "description": "Postgres pgvector-backed semantic skill search adapter with Bedrock embeddings and hybrid BM25 + vector RRF ranking",
   "type": "module",
